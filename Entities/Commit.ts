@@ -1,5 +1,5 @@
-import { generateCommitId } from './Utils/Factories';
-import { removeElementFromArray } from './Utils/Arrays';
+import { generateCommitId } from './../Utils/Factories';
+import { removeElementFromArray } from './../Utils/Arrays';
 
 class Commit {
     private id: string;
