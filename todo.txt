@@ -1,2 +1,3 @@
 1. Use interpreter pattern for git commands 
 2. Remove all mutations
+3. Create encryption class
