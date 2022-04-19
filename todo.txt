@@ -1,0 +1,2 @@
+1. Use interpreter pattern for git commands 
+2. Remove all mutations
