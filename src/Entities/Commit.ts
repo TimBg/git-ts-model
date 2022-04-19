@@ -1,12 +1,11 @@
-import { generateCommitId } from './../Utils/Factories';
 import { removeElementFromArray } from './../Utils/Arrays';
 
-class Commit {
+export class Commit {
     private id: string;
     private descendants: Commit[];
 
     constructor() {
-      this.id = generateCommitId();
+      this.id = Commit.generateId();
       this.descendants = [];
     }
 
@@ -16,5 +15,9 @@ class Commit {
 
     removeDescendant(commit: Commit): void {
         removeElementFromArray(this.descendants, commit);
+    }
+
+    static generateId(): string {
+        return 'a'.repeat(40);
     }
 }
