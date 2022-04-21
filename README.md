@@ -1,2 +1,2 @@
-# git-js-model
+# git-ts-model
 Version control system model git on ts
