@@ -11,13 +11,11 @@ type FoldersMap = {
 } 
 
 export class Enviroment {
-    private static git: Git;
     private folders: FoldersMap;
     private currentPath: PathToFile;
     private currentFolder: SystemFolder;
 
     constructor() {
-        Enviroment.git = Git;
         this.currentPath = 'C:\\';
         this.currentFolder = new SystemFolder();
         this.folders = {
