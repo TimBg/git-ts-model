@@ -1,0 +1,1 @@
+export const THIS_FOLDER_IS_ALREADY_A_GIT_REPOSITORY = 'This folder is already a git repository';
