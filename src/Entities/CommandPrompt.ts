@@ -1,4 +1,5 @@
 import { TerminalCommand } from "../consts/CommonTypes";
+import { prefixToInterpreter } from "../consts/Configs";
 import { Cmd } from "./Cmd";
 import { SystemExecutor } from "./SystemExecutor";
 
@@ -9,7 +10,7 @@ export class CommandPrompt {
     
     constructor(executorOfCommands: SystemExecutor) {
         this.currentPath = 'C:\\';
-        this.interpreter = new Cmd();
+        this.interpreter = new Cmd(prefixToInterpreter);
         this.executorOfCommands = executorOfCommands;
     }
 

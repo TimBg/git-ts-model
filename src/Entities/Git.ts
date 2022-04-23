@@ -1,7 +1,12 @@
+import { CommandsExecutor } from "./CommandsExecutor";
 import { SystemFolder } from "./Folders/SystemFolder";
 import { VirtualFolder } from "./Folders/VirtualFolder";
 
-export class Git {
+export class Git extends CommandsExecutor {
+
+    constructor() {
+        super();
+    }
     
     static branch() {}
 
