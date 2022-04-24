@@ -2,19 +2,23 @@ import { FoldersMap, TerminalCommand } from "../consts/CommonTypes";
 import { THIS_FOLDER_IS_ALREADY_A_GIT_REPOSITORY } from "../consts/ErrorKinds";
 
 import { isGitFolder } from "../Utils/TypeCheckers";
+import { CommandsExecutor } from "./CommandsExecutor";
+import { Folder } from "./Folders/Folder";
 
 import { VirtualFolder } from "./Folders/VirtualFolder";
 import { Git } from "./Git";
 
-type CommandToAction = {
-    [nameOfCommand: string]: Function 
+type PrefixToExecutor = {
+    [nameOfModule: string]: CommandsExecutor
 };
 
-export class SystemExecutor {
-    private folders: FoldersMap;
+export class MainExecutor {
+    private rootFolder: Folder;
+    private executorsConfig: PrefixToExecutor;
 
-    constructor(folders: FoldersMap) {
-        this.folders = folders;
+    constructor(rootFolder: Folder, executorsConfig: PrefixToExecutor) {
+        this.rootFolder = rootFolder;
+        this.executorsConfig = executorsConfig;
     }
 
    // private commandToAction: CommandToAction

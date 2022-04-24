@@ -1,7 +1,7 @@
 import { Folder } from "./Folder";
 
 export class SystemFolder extends Folder {
-    constructor() {
-        super();
+    constructor(nameOfFolder: string) {
+        super(nameOfFolder);
     }
 }

@@ -1,22 +1,20 @@
+import { TerminalCommand } from '../consts/CommonTypes';
+import { prefixToExecutor } from '../consts/Configs';
+
+import { CommandPrompt } from './CommandPrompt';
+import { MainExecutor } from './MainExecutor';
+import { Folder } from './Folders/Folder';
 import { SystemFolder } from './Folders/SystemFolder';
 
-import { FoldersMap, PathToFile, TerminalCommand } from '../consts/CommonTypes';
-import { CommandPrompt } from './CommandPrompt';
-import { SystemExecutor } from './SystemExecutor';
-
 export class Enviroment {
-    private folders: FoldersMap;
-    private currentFolder: SystemFolder;
     private commandPrompt: CommandPrompt;
-    private executorOfCommands: SystemExecutor;
+    private systemExecutor: MainExecutor;
+    private rootFolder: Folder;
 
     constructor() {
-        this.currentFolder = new SystemFolder();
-        this.folders = {
-            ['C:\\']: this.currentFolder
-        };
-        this.executorOfCommands = new SystemExecutor(this.folders);    
-        this.commandPrompt = new CommandPrompt(this.executorOfCommands);
+        this.rootFolder = new SystemFolder('C');
+        this.systemExecutor = new MainExecutor(this.rootFolder, prefixToExecutor);    
+        this.commandPrompt = new CommandPrompt(this.systemExecutor);
     }
 
     executeTerminalCommand(nameOfCommand: TerminalCommand) {

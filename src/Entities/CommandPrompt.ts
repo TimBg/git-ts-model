@@ -1,23 +1,37 @@
 import { TerminalCommand } from "../consts/CommonTypes";
-import { prefixToInterpreter } from "../consts/Configs";
-import { Cmd } from "./Cmd";
-import { SystemExecutor } from "./SystemExecutor";
+import { prefixToExecutor } from "../consts/Configs";
+import { MainExecutor } from "./MainExecutor";
 
 export class CommandPrompt {
     private currentPath: string; 
-    private interpreter: Cmd;
-    private executorOfCommands: SystemExecutor;
+    private systemExecutor: MainExecutor;
     
-    constructor(executorOfCommands: SystemExecutor) {
+    constructor(executor: MainExecutor) {
         this.currentPath = 'C:\\';
-        this.interpreter = new Cmd(prefixToInterpreter);
-        this.executorOfCommands = executorOfCommands;
+        this.systemExecutor = executor;
     }
 
-    // change current path in addition to executing git commands
-    // add switch for choosing the correct interpreter - git or jumping between folders
+    private riseAbove(): void {
+        this.currentPath = this.currentPath.split('\\').slice(0, -1).join('\\');
+    }
+
+    private changeDirectory(command: TerminalCommand) {
+        if(command === 'cd ..') {
+            if(this.currentPath === 'C:\\') {
+                console.log('This is the root folder');
+            } else {
+                this.riseAbove();
+            } 
+        } else {
+            //...
+        }
+    }
+
     executeCommand(command: TerminalCommand): void {
-        const normalizedCommand = this.interpreter.normilizeCommand(command);
-        this.executorOfCommands.execute(normalizedCommand);
+        if(command.slice(0, 2) === 'cd') {
+            this.changeDirectory(command);
+        } else {
+            this.systemExecutor.execute(command);
+        }
     }
 }
