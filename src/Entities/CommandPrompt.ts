@@ -1,5 +1,4 @@
 import { TerminalCommand } from "../consts/CommonTypes";
-import { prefixToExecutor } from "../consts/Configs";
 import { MainExecutor } from "./MainExecutor";
 
 export class CommandPrompt {

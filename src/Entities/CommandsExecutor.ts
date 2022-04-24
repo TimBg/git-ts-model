@@ -1,7 +1,5 @@
 import { TerminalCommand } from "../consts/CommonTypes";
 
-export class CommandsExecutor {
-    public execute(command: TerminalCommand): void {
-
-    }
+export abstract class CommandsExecutor {
+    public abstract execute(command: TerminalCommand): void;
 }
