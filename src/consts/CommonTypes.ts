@@ -12,3 +12,7 @@ export type FoldersMap = {
 export type PrefixToCommandsExecutor = {
     [prefix: string]: CommandsExecutor
 }
+
+export type GitCommandToMethod = {
+    [key: string]: Function
+}
